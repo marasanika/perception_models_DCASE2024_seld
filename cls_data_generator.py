@@ -96,10 +96,14 @@ class DataGenerator(object):
                     if temp_feat.shape[0] > max_frames:
                         max_frames = temp_feat.shape[0]
             else:
+                print("checking splots")
+                print(int(filename[4]), "is not in ", self._splits, "I guess")
                 if int(filename[4]) in self._splits:  # check which split the file belongs to
+                    print("in splot")
                     if self._modality == 'audio' or (hasattr(self, '_vid_feat_dir') and os.path.exists(os.path.join(self._vid_feat_dir, filename))):   # some audio files do not have corresponding videos. Ignore them.
                         self._filenames_list.append(filename)
                         temp_feat = np.load(os.path.join(self._feat_dir, filename))
+                        print("TEMP FEAT", temp_feat)
                         total_frames += (temp_feat.shape[0] - (temp_feat.shape[0] % self._feature_seq_len))
                         if temp_feat.shape[0]>max_frames:
                             max_frames = temp_feat.shape[0]

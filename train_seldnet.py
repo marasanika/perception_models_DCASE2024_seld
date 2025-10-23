@@ -360,7 +360,7 @@ def main(argv):
         elif '2024' in params['dataset_dir']:
             test_splits = [[4]]
             val_splits = [[4]]
-            train_splits = [[3]]
+            train_splits = [[4]]
 
         else:
             print('ERROR: Unknown dataset splits')

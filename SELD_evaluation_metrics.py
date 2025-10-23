@@ -303,17 +303,17 @@ class SELDMetrics(object):
 
             # Class-sensitive localization performance
             AngE = self._total_AngE / (self._DE_TP + eps)
-            AngE[self._DE_TP==0] = np.NaN
+            AngE[self._DE_TP==0] = np.nan
             DistE = self._total_DistE / (self._DE_TP + eps)
-            DistE[self._DE_TP==0] = np.NaN
+            DistE[self._DE_TP==0] = np.nan
             RelDistE = self._total_RelDistE / (self._DE_TP + eps)
-            RelDistE[self._DE_TP==0] = np.NaN
+            RelDistE[self._DE_TP==0] = np.nan
             LR = self._DE_TP / (eps + self._DE_TP + self._DE_FN)
 
             SELD_scr = self.early_stopping_metric(np.repeat(ER, self._nb_classes), F, AngE, LR, RelDistE)
 
             IDSR = self._idss / (self._Nref + eps)
-            IDSR[self._Nref==0] = np.NaN
+            IDSR[self._Nref==0] = np.nan
 
             classwise_results = np.array(
                 [np.repeat(ER, self._nb_classes), F, AngE, DistE, RelDistE, LR, SELD_scr] if self.eval_dist else [
